@@ -1,4 +1,4 @@
-# 30day-chalange
+# 30day-challange
 🐍 HTB Retired Exploits – 30 Days of Python
 🇬🇧 English
 
