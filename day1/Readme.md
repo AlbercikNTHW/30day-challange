@@ -1,5 +1,7 @@
 🍬 Challenge: CandyVault (HTB - Retired)
-Category: Web Difficulty: Easy Vulnerability: NoSQL Injection (MongoDB)
+Category: Web
+Difficulty: Easy 
+Vulnerability: NoSQL Injection (MongoDB)
 
 📖 Description
 CandyVault is a retired web challenge on Hack The Box that introduces users to a classic NoSQL Injection scenario in a MongoDB-based login system. The objective is to bypass authentication and retrieve the hidden flag.
