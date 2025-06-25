@@ -1,6 +1,6 @@
-🍬 Challenge: CandyVault (HTB - Retired)
-Category: Web
-Difficulty: Easy 
+🍬 Challenge: CandyVault (HTB - Retired)\n
+Category: Web\n
+Difficulty: Easy\n
 Vulnerability: NoSQL Injection (MongoDB)
 
 📖 Description
