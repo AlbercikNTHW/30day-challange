@@ -1,0 +1,30 @@
+🍬 Challenge: CandyVault (HTB - Retired)
+Category: Web Difficulty: Easy Vulnerability: NoSQL Injection (MongoDB)
+
+📖 Description
+CandyVault is a retired web challenge on Hack The Box that introduces users to a classic NoSQL Injection scenario in a MongoDB-based login system. The objective is to bypass authentication and retrieve the hidden flag.
+
+🔍 Technical Overview
+The application implements a login page where users are expected to enter an email and password. However, improper input sanitization and the usage of MongoDB’s find_one() method introduce a vulnerability.
+
+The backend likely includes code similar to:
+
+```
+python
+user = users.find_one({ "email": email, "password": password })
+```
+Because user input is inserted directly into the query without validation, it's possible to manipulate the query structure.
+
+🧪 Exploitation Strategy
+By sending a specially crafted JSON payload, we can bypass authentication using logical operators like $ne (not equal). Example payload:
+
+```json
+{
+  "email": { "$ne": null },
+  "password": { "$ne": null }
+}
+```
+Important: The Content-Type header must be set to application/json, or the server will treat values as strings rather than objects.
+
+✅ Result
+On successful exploitation, the login bypasses and redirects to a flag page—completing the challenge.
