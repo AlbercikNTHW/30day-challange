@@ -1,4 +1,4 @@
-Challenge: PumpkinSpice (HTB – Retired)
+🎃Challenge: PumpkinSpice (HTB – Retired)
 <br>
 Category: Web
 <br>
@@ -9,7 +9,7 @@ Vulnerability: XSS -> SSRF -> RCE
 <h1>Description</h1>
 <br>
 PumpkinSpice is a simple web challenge where you must exploit an XSS vulnerability in the “address” parameter. That flaw leads to an SSRF and, ultimately, a successful RCE on the server.
-
+<br>
 The script performs the following steps:
 <ul>
 <li>Read target: grab the host (IP or domain) from sys.argv[1].</li>
