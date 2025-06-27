@@ -1,3 +1,5 @@
+Challenge: Trapped Source (HTB – Retired) <br> Category: Web <br> Difficulty: Easy <br> Vulnerability: Information Disclosure
+
 <h1>Description</h1>
 <br>
 The challenge presents a web application that embeds a correctPin value in a JavaScript object within the page source. This PIN must be submitted in a POST request to /flag in order to retrieve the flag.
