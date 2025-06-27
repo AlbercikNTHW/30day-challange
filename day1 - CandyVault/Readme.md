@@ -1,34 +1,5 @@
-🍬 Challenge: CandyVault (HTB - Retired)
-<br>
-Category: Web
-<br>
-Difficulty: Easy
-<br>
-Vulnerability: NoSQL Injection (MongoDB)
+🍬 Challenge: CandyVault (HTB – Retired) <br>Category: Web <br>Difficulty: Easy <br>Vulnerability: NoSQL Injection –> Authentication Bypass
 
-📖 Description
-CandyVault is a retired web challenge on Hack The Box that introduces users to a classic NoSQL Injection scenario in a MongoDB-based login system. The objective is to bypass authentication and retrieve the hidden flag.
+<h1>Description</h1> <br> CandyVault is a retired web challenge where a MongoDB-backed login endpoint fails to sanitize JSON input. By injecting query operators, you can trick the database into authenticating you without valid credentials—and then grab the hidden flag.
 
-🔍 Technical Overview
-The application implements a login page where users are expected to enter an email and password. However, improper input sanitization and the usage of MongoDB’s find_one() method introduce a vulnerability.
-
-The backend likely includes code similar to:
-
-```
-user = users.find_one({ "email": email, "password": password })
-```
-Because user input is inserted directly into the query without validation, it's possible to manipulate the query structure.
-
-🧪 Exploitation Strategy
-By sending a specially crafted JSON payload, we can bypass authentication using logical operators like $ne (not equal). Example payload:
-
-```
-{
-  "email": { "$ne": null },
-  "password": { "$ne": null }
-}
-```
-Important: The Content-Type header must be set to application/json, or the server will treat values as strings rather than objects.
-
-✅ Result
-On successful exploitation, the login bypasses and redirects to a flag page—completing the challenge.
+<ul> <li>Read target: grab the base URL from <code>sys.argv[1]</code>.</li> <li>Craft injection payload: <pre><code>{ "email": { "$ne": null }, "password": { "$ne": null } } </code></pre> </li> <li>Send login request: POST to <code>/login</code> (or equivalent) with the JSON body and header <code>Content-Type: application/json</code>.</li> <li>Bypass authentication: MongoDB’s <code>find_one({email, password})</code> returns the first document because both fields are “not equal to null.”</li> <li>Grab the flag: upon “successful” login you’re redirected to or can directly fetch <code>/flag</code> (or the protected page revealing the flag).</li> </ul>
