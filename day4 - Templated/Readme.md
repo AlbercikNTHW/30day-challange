@@ -10,7 +10,7 @@ The challenge presents a Flask/Jinja2 web application that reflects any nonexist
 The exploitation script performs the following steps:  
 <ul>  
   <li>Reads the target’s address from the command line and prepends “http://” if needed.</li>  
-  <li>Sends a GET request to `http://IP/{{8*8}}` to confirm SSTI (expects “64”).</li>  
+  <li>Sends a GET request to <b>http://IP/{{8*8}}<b> to confirm SSTI (expects “64”).</li>  
   <li>If “64” appears in the response, prints “[+] Target is vulnerable! (Jinja2 SSTI confirmed)”.</li>  
   <li>Constructs the flag payload:  
     <code>{{self.__init__.__globals__['__builtins__']['__import__']('os').popen('cat flag.txt').read()}}</code>.  
