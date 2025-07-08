@@ -1,5 +1,5 @@
-Challenge: Lazy Ballot (HTB) <br
-> Category: Web <br>
+Challenge: Lazy Ballot (HTB) <br> 
+Category: Web <br>
 Difficulty: easy <br> 
 Vulnerability: NoSQL Injection
 <br>
