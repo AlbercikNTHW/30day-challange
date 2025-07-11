@@ -1,3 +1,7 @@
-Challenge: Amidst Us (HTB)<br> Category: Web <br> Difficulty: Easy <br> Vulnerability: Remote Code Execution via PIL.ImageMath.eval <br> <h1>Description</h1> The “background” array values are injected directly into an f-string that’s evaluated by PIL.ImageMath.eval.. By breaking out of the numeric context in the first element of “background”, you can run arbitrary Python code on the server.
+Challenge: Spookifier (HTB)<br>
+Category: Web <br>
+Difficulty: easy <br>
+Vulnerability: Server-Side Template Injection in Jinja2 <br>
+<h1>Description</h1> The “description” field is injected directly into a Jinja2 template that’s rendered without any sanitization. By breaking out of the template context with a crafted Jinja2 expression, you can execute arbitrary Python code on the server.
 
-<ul> <li>Send a POST with Content-Type: application/json</li> <li>The server decodes your image, plugs “background” values into ImageMath.eval, and executes your code, copying the flag to a public folder.</li> <li>Retrieve the flag by requesting http://{HOST}/static/uploads/flag.txt</li> </ul>
+<ul> <li>Send a POST with Content-Type: application/json and a JSON body containing “description”.</li> <li>The server calls render_template_string on your “description”, evaluating your payload.</li> <li>Use SSTI to run OS commands, e.g. copy /flag.txt into a web-accessible folder.</li> <li>Retrieve the flag by requesting http://{HOST}/static/uploads/flag.txt</li> </ul>
