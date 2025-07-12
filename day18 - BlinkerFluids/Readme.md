@@ -7,7 +7,7 @@ Vulnerability: Blind Code Injection (CVE-2021-23639)  <br>
 
 The target uses an outdated version of the `marked` Markdown parser (< v4.0.0) that is vulnerable to CVE-2021-23639. This flaw allows an attacker to inject and execute arbitrary JavaScript on the server during the Markdown-to-HTML conversion phase.  
 
-Under the hood, `marked` let you specify a “lang” hint on fenced code blocks (e.g. ```js) and would invoke that language’s runtime when rendering. By abusing the `js` hint, you can call Node’s `require("child_process").execSync()` to run shell commands. Since the parser runs as part of the invoice-creation API, your payload executes on the server with full privileges.  
+Under the hood, `marked` let you specify a “lang” hint on fenced code blocks and would invoke that language’s runtime when rendering. By abusing the `js` hint, you can call Node’s `require("child_process").execSync()` to run shell commands. Since the parser runs as part of the invoice-creation API, your payload executes on the server with full privileges.  
 
 The typical exploitation flow is:  
 <ul>
